@@ -1,0 +1,46 @@
+﻿@model Web_BanHang.Context.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Login
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="float-right">Forgot password?</a>
+                        <label class="float-left custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" checked="">
+                            <div class="custom-control-label">Remember</div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-primary btn-block" value="Login" />
+                    </div>
+                }
+                <a href="#" class="btn btn-facebook btn-block mb-2"> <i class="ti-facebook"></i> &nbsp  Login with Facebook</a>
+                <a href="#" class="btn btn-google btn-block mb-4"> <i class="ti-google"></i> &nbsp  Login with Google</a>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="text-center mt-4">Don't have account? <a href="~/Home/Register">Register</a></p>
+
+
